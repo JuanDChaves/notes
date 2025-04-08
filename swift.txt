@@ -1,0 +1,177 @@
+IS: Initializer Syntax
+SS: Subscript Syntax (Index Syntax)
+
+- A literal is a fixed value (explicit, hardcoded values)
+- A value that requires computation, initialization or is derived is not a literal
+
+### Collection Types ###
+#Array
+IS -> 
+.isEmpty
+.first
+.last
+.count
+.append(_:)
+.insert(:_, at: 0)
+.remove(at: 0)
+.removeLast()
+
+>for-in loop
+.enumerated()
+
+#Set
+IS ->
+.isEmpty
+.count
+.insert(_:)
+.remove(_:)
+.removeAll()
+.contains(_:)
+
+>for-in loop
+.sorted()
+
+>Set Operations
+.intersection(:_)
+.symmetricDifference(:_)
+.union(:_) 
+.subtracting(:_)
+.isSubset(of:)
+.isSuperset(of:)
+
+.isStrictSubset(of:)
+.isStrictSuperset(of:)
+.isDisjoint(with:)
+
+
+#Dictionary
+IS -> var namesOfIntegers: [Int: String] = [:]
+.count
+.isEmpty
+.updateValue(_:forKey:) : Returns Old Value
+.removeValue(forKey:)
+
+>for-in loop 
+- Decompose the (key, value)tuple) 
+- in dic.keys / in dic.values
+.sorted()
+
+#If
+- If Statement: The regular format
+- If Expression: As a right-hand side assignment or the return value of a function or a closure.
+    let ifExpression: String? = if true {
+        "A String"
+    } else {
+        nil / nil as String?
+    }
+- Can throw errors: throw SomeError.message
+
+#Switch
+- Must be exhaustive
+- Switch Statement: The regular format
+- Switch Expression: Same as If Expression
+- Can throw errors: throw SomeError.message
+- No implicit Fallthrough. If needed use fallthrough keyword
+
+#Ternary Conditional Operator
+let mnemonic = W ? T : F
+
+#For-in
+- Closed range operator ... (through)
+- Half-open range operator ..< (up to)
+- stride (from:through:by) / stride(from:to:by)
+- If loop variable is not needed, it can be a _ 
+- All collections must conform with the Sequence Protocol
+
+#While
+- Used when the end of the loop is unknown or infinite.
+
+#Repeat-while
+- Performs a single pass thorugh the loop before evaluated by loop's condition
+
+#Function
+- Parameters = Placeholders > In func declaration
+- Arguments = Actual values > In func call
+
+func funcName(param1: String, param2: Sting) -> Bool {
+    param1 == param2
+
+- Expressions are thing that can be assigned to variables/boiled down to a single value
+- Statements is what we call when we create variables, start a loop or check a condition
+
+_ : to remove the argument label in funcion declaration
+dataType... :  after parameter's type name to pass a varying number of input values (Variadic Parameters)
+
+func myFunction(argumentLabel parameterName: String = "defaultValue") {}
+
+- Understand better Function Types as Parameter Types and as Return Types
+
+#Clousure
+Is a variable with functionality
+- Functions without a return type, return Void
+- There are Argument Labels and Parameter Names
+- Shorthand Argument Names : $0, $1, ..
+- The trailing closure syntax means that the body of the closure goes after the parenthesis of a function being called. 
+
+#Enum
+- Are value types
+
+#Struct
+- Are value types
+- Variables and Constants inside structs are called Properties
+- Functions inside structs are Methods
+- There are store properties and computed properties
+- As soon as I use a initializer, I loose the memberwise initializer
+- Static properties and methods are attached to a struct not to one of its instances 
+
+
+#Class
+- Are reference types
+- The identity operators ===, !== can determine if something refers to the same single instance.
+
+#Protocol
+
+#Extension
+- Add functionality (methods) to classes, structs, etc.
+
+#Optional
+if let
+guard let
+?? : Nil coalescing operator
+
+## Basics ##
+- Swift
+- SwiftUI
+- Networking
+- Working with Data
+- Version Control
+## Basics + ##
+- UIKit
+- CoreData 
+- Testing
+- Software Architecture
+- Multithreading
+
+## Cosas en busquedas laborales ##
+- CocoaPods
+- Combine
+
+
+100SwiftUI
+1. Form, NavigationStack, @State
+2. VStack, Image
+Vstack
+HStack
+ZStack
+    
+LinearGradient
+    Gradient.Stop
+Radial
+AngularRadient
+
+Button
+    .role
+    .buttonStyle
+Label
+
+Custom View Modifiers

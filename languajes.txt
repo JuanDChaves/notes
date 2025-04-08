@@ -1,0 +1,23 @@
+Spanish
+English
+Russian
+
+German
+Portuguese
+French
+Japanese
+Korean
+Italian
+
+Turkish    N 84.000.000
+Finnish    N  5.800.000
+Georgian   N  4.000.000
+Lithuanian N  3.000.000
+Islandic   N    330.000
+Euskera    R    750.000
+Irish
+
+Koine Greek
+Church Slavonic
+Latin
+

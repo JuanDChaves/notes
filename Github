@@ -1,0 +1,48 @@
+In Github
+Settings > Developer Settings > Personal Access Tokens > Generate new token
+
+-Check if I already have an SSH key.
+
+-If not create one like this.
+	ssh-keygen -t ed25519 -C "juandavidchaves@protonmail.com"
+	
+-Now that I have an SSH key I copy it to the clipboard
+(pbcopy < ~/.ssh/id_ed25519.pub )
+
+-Go to SSH and GPG keys > New SSH key > Give it a title and copy the whole thing.
+
+-To test the connection write:
+	ssh -T git@github.com
+
+-If you find older keys or a warning message, remove outdated hosts
+	ssh-keygen -R github.com
+
+
+###################
+git clone git@github.com:userName/repoName.git
+git status
+git init
+git add .
+git commit -m "message"
+git config --global user.email "juandavidchaves@protonmail.com"
+git config --global user.name "JuanDChaves"
+git log
+git checkout
+git branch
+git switch
+git ls-files
+git rm
+git restore
+git clean
+
+echo "# notes" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:JuanDChaves/notes.git
+git push -u origin main
+
+git remote add origin git@github.com:JuanDChaves/notes.git
+git branch -M main
+git push -u origin main

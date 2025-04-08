@@ -1,0 +1,23 @@
+vim
+tree
+plocate
+nmap
+testdisk
+git
+netstat
+net-tools
+tcpdump
+apache2
+wireshark
+htop
+wipe
+lshw
+exfat-utils
+exfat-fuse
+ncdu
+strace
+sysstat
+openssh-server
+fasttrack-archive-keyring (Debian Fast Track)
+rsync
+tmux

@@ -1,0 +1,560 @@
+### NAVIGATION / FINDING ###
+pwd
+whoami
+id
+man
+--help, -h, -?
+* wildcards (any:*, limited to 1 char:?, exactly:[])
+- : range -> 7-12
+^ : not
+sudo !! : run the last command with sudo
+[someCommand] $(subshell command)
+stat [path] : Shows status
+cd
+    - : To prevous directory
+    ~ : To home directory 
+ls 
+    -a : show hidden files
+    -l : long
+    -i : Inodes
+cat
+less/more
+head
+    -n [#]
+tail
+    -n [#]
+history
+command -v [someCommand]
+touch : Create file/Change timestamp of a file
+file : Find out what kind of file it is
+locate : Find a file in the db (updatedb if needed).
+    -i : Case insensitive
+    -c : Count matches
+find [path / options]
+   -name 
+   -type [f/d]
+   -exec [command {} +]
+whereis : Locate binaries, source files, man pages on specific location
+which : Locate executables only on PATH
+grep [pattern file/path]
+    -v : Not matching results
+    -n : Results with line number
+    -c : Count of results
+    -i : Case insensitive
+    -r : Recursive search
+wc
+    -c : Byte count
+    -m : Character count
+    -l : Line count
+    -w : Word count
+nl : number lines
+env : List the environment variables (PATH, PWD, USER, etc)
+clear
+
+tmux
+ctrl+b : Signal
+    d : Detach
+    % : New vertical pane
+    " : New horizontal pane
+    arrows : Move between panes
+    x : Kill pane
+    c : Create window
+    p : Previous window
+    n : Next window
+    & : Kill window
+    , : Rename window
+    $ : Rename session
+    s : Sessions
+list-sessions/ls : See active sessions
+attach/a : reattach
+    -t [#ofSession]
+new-window
+rename-window [newName]
+rename-session [newName]
+
+~/.tmux.conf : Create this file to customize tmux
+
+
+### FILE MANIPULATION ###
+> : stdout redirect
+< : stdin redirect
+>> : append
+| : pipe 
+
+tee 
+    -a : append, not overwrite
+mkdir
+    -p : Create subdirectories
+rm
+    -f : force
+    -i : prompt before removal
+    -r : recursive
+rmdir : remove empty directories only
+cp
+mv : move and rename
+truncate
+cut 
+    -b [#] : Select by byte
+    -c [#] : Select by character
+    -d [pattern] -f [#]: Select by delimeter and field
+paste [option file1 file2]
+    -d [pattern] : delimiter
+expand/unexpand (?)
+join/split (?)
+sort 
+    - r : reverse
+    - n : numerical
+    - u : unique
+    - o : output
+    - R : random
+shuf
+    - n : number of occurances
+    - i : interval
+    - o : output
+tr [inPattern] [outPattern] 
+    - d : delete
+    - s : squeeze-repeats (remove duplicate characters)
+uniq
+    - u : only unique
+    - d : only duplicate
+    - c : count
+
+### SYSADMIN ###
+# Groups & Permissions #
+
+/etc/sudoers 
+
+/etc/passwd : To see what users are in the system
+userName : pass(x) : UID : GID : UserInfoField : homeDirectory : user's Shell
+
+/etc/shadow
+userName : pass(hash) : daysOfLastPassChange : daysCanChangePass : daysMustChangePass : reminder :::
+
+/etc/group
+groupName : pass : GID : listOfUsers
+
+su : substitute user
+visudo : to modify sudoers file
+sudo useradd [userName]
+    -m : Create the home directory
+    -r : Create a System User
+sudo userdel [userName]
+    -r : Remove the home directory
+passwd [userName]
+
+sudo chmod ([u/g/o][+/-][r/w/x/(s)]) / [(4)421] [file or directory]
+    u/g/o : user/group/other
+    +/- : add/remove
+    r/w/x/(s) : read/write/execute/(special)
+    -R : recursive
+    (4)421 = (s)rwx
+sudo chown [userName:groupName] [file or directory]
+
+sudo usermod 
+    -a : append
+    -G : add to group [groupName] [userName]
+
+   -R : recursive
+    
+groups [userName] : Shows groups to which the user belongs
+sudo gpasswd : manages groups
+    - a [userName] [groupName] : add user to a secondary group
+sudo chgrp [groupName] [file or directory]
+sudo groupadd [groupName]
+sudo groupdel [groupName]
+
+umask : To see default permissions removal on creation 
+
+# Processes #
+/proc/ : Processes file system
+/proc/version : Kernel Version
+/proc/cpuinfo
+
+ps
+    -- quick-pid [uid]
+    -a : all 
+    -u : more details
+    -x : processes not associated with a terminal (TTY) 
+top/htop
+    NI & PRI : The higher the number the lower the priority
+pidof : Process ID of [aProcess]
+kill
+    -L : List of Signals
+    -1 : HUP [PID]
+    -2 : INT 
+    -9 : KILL [PID]
+    -15: TERM [PID]
+killall
+sudo renice : modify priority of existing processes
+    -n [-20..20] -p [PID]
+nice : modify priority of new processes 
+    -n [-20..20] [processName]
+jobs : list of jobs running in the background along with jobIds
+ctrl + z : Send currently opened task to the background
+[taskName] & : Send new task to the background 
+bg : Shows the procceses that are currently in the backgound 
+fg [jobId] : Send task to foreground. If no jobId, default to the last one
+
+systemctl 
+    status/start/stop/restart/enable/disable [serviceName]
+    edit [serviceFile]
+    deamon-reload : look for changes in unitfiles to update.
+/etc/sysctl.conf : sysctl configuration
+ 
+/etc/systemd/system : Highest priority units
+/run/systemd/system : Runtime systemd units
+/lib/systemd/system : User installed services 
+
+lsof  : ls Open Files
+    [path]
+    -u [userName] 
+    -c [processName]
+    -p [processID]
+
+fuser : Show user processes 
+
+/proc/loadavg : check load average
+load average : 1min, 5min, 15min
+uptime 
+    -p : pretty
+
+iostat : Cpu report 
+vmstat : Memory report 
+
+/etc/default/sysstat : Toggle to enable to start monitoring
+/etc/cron.d/sysstat : Other config
+/etc/sysstat/sysstat : Other config
+sudo sar : System activity reporter
+    -u : usage
+    -r : memory usage
+    -S : swap usage
+    -u -f /var/log/sysstat/[file]
+
+/etc/crontab : Cron Table
+0-59  0-23  1-31  1-12  0-7   
+min   hour  day   month weekday command
+@reboot/hourly/daily/monthly/..etc command
+crontab  
+    -l : list
+    -u : Username
+    -e : Edit
+at/crond/systemd timers : Other options
+
+# Packages #
+.deb : Debian, Ubuntu, LinuxMint
+dpkg 
+    -l : list
+    -i : install
+    -r : remove
+    -i [somePackage.deb]
+apt
+
+.rpm : RedHat, Fedora, CentOS
+rpm 
+    -qa: query all
+    -i : install
+    -e : erase
+yum
+    update 
+    install [packageName]
+    erase [packageName]
+    info [packageName]
+
+/etc/apt/sources.list : repositories
+
+dnf : Fedora, CentOs, ..
+apt/apt-get
+    update 
+    upgrade 
+    install [packageName]
+    revome [packageName]
+    autoremove : remove all unnecesary packets
+    search [packetName]
+    show [packetName]
+
+tar : pack/unpack
+    -c : create
+    -v : verbose
+    -f [fileName]
+    -t : list files inside a .tar
+    -x : extract
+    -z : use gzip/gunzip
+    -cf [newFile.tar fileToPack]
+    -tvf
+    -xf
+gzip [fileName] : .tar.gz / .tgz
+gunzip [compressedFile.gz] 
+bzip2/bunzip2 : .tar.bz2 (slowest but smaller)
+compress/uncompress : .tar.z (fastest but larger)
+
+# Devices #
+/dev/ : devices in the system 
+c : character
+b : block
+p : pipe
+s : socket
+
+-- SCSI Devices
+/dev/sda : A hard drive
+sd: SCSI Disk
+
+-- Pseudodevices
+/dev/null
+/dev/random
+/dev/zero
+
+/sys/ : Information about the devices in the system (Sysfs - Sys File System)
+
+udevadm 
+    info --query=all --name=/dev/devName : See device information
+    monitor
+lsusb
+    -t : tree view
+lspci
+lshw
+    -short
+    -html : Hardware info in html format
+lsscsi
+lscpu
+lsblk : See block storage devices
+
+dd : Data Definition (Copy data from one file to another)
+    if : Input File (file, block storage devices, etc)
+    of : Output File
+    bs : Block Size
+    count  
+
+    if=[somePath] of=[somePath] 
+
+# File Systems #
+ext4 : Linux
+NTFS & FAT : Windows
+HFS+ : Mac
+
+df : Disk Free
+    -h : human readable (print sizes in powers of 1024)
+    -T : type
+    -x [fileSystemType] : exclude a type (e.g. tmpfs)
+    -i : show inodes
+du [path(s)] : Disk Usage
+    -h : human readable
+    --max-depth [#] : limit the depth in file heirarchy
+    -s : summary
+    -c : total size of the selected paths
+sudo ncdu [path] 
+    -x : exclude all non-local devices
+    find file and d : delete file
+
+sudo parted 
+    -l : List partitions of the system
+sudo fdisk [devicePath]  
+    -l : List
+    INTERACTIVE
+    m : menu
+    p : show partition table
+    g : create GPT partition table 
+    n : create new partition.
+        - Partition number (default 1)
+        - Fist Sector (default first available)
+        - Last Sector (default last available)
+    w : write
+    
+sudo mkfs -t [type] [mountPointPath] : Assigns a file system.
+
+sudo mount [devicePath] [mountPointPath]
+    -a : Mount everything in /etc/fstab file
+umount
+
+/media/ : Recommended to mount any temporary storage volume
+/mnt/ : Recomended to mount any permanent storage volume
+
+/etc/fstab : Allows to automatically mount something on boot.
+    Add line to the file: 
+    [fileSystem] [mountPoint] [type] defaults,ro 0 0
+
+blkid : show UUID of volumes
+
+sudo fsck [volumePath] : FileSystem Check, file system repair
+
+free
+    -h : human
+    -m : megabytes
+sudo mkswap [partitionPath] : format as swap spacne
+sudo swapon [partitionPath]
+    -a : activate all spaces in /etc/fstab
+    --show
+sudo swapoff [partitionPath]
+    -a : disable all spaces in /etc/fstab
+
+sysctl vm.swappiness : Show the likelihood of swap memory being used.
+
+ln
+    -s [filePath] [linkPath] : Symbolic/Soft Link
+
+### NETWORKING ###
+# File Transfering #
+scp [fileNamePath] [userName@remoteHost:Path] : Ideal for single file sharing
+    -P [2222] : Port forwarding If using NAT to VM
+    -p : preserve, to original date of file creation.
+    -r : recursive, to copy directories
+rsync [fileNamePath] [userName@remoteHost:Path] : For anything else
+    -r : recursive
+    -v : verbose
+    -a : archive mode. Copy metadata also. 
+    --delete : delete files that don't match
+    --dry-run : Make sure you're doing it right.
+    --remove-souce-files
+
+NFS (Network File System)
+
+# TCP/IP #
+ip (ifconfig)
+    addr show / a
+    address show
+    link show
+    link set
+    neighbour
+iw (iwconfig)
+nmap 
+    - sT [IP ADDRESS] 
+ping
+netstat
+ss
+tcpdump
+
+CIDR
+NAT
+Subnetting 
+    - Binary/decimal/hexadecimal conversion
+
+route
+    -n
+    add
+    del
+Routing Protocols - DVP, LSP, BGP
+
+dhclient
+nm-tool
+nmcli
+arp
+
+ICMP
+
+traceroute
+mtr
+
+/etc/services
+
+DNS 
+
+/etc/hosts : IP Address map
+
+nslookup
+dig
+### LOGGING ###
+
+/var/log/boot.log : Log file for boot process
+/var/log/apt
+last : login logout 
+/var/log/wtmp : login logout Binary 
+lastb : bad login logout
+    -a : hostname and last column
+    -d : attempt match dns names to ip addresses
+    -F : times
+/var/log/btmp : bad login logout binary
+/var/log/auth.log : authorization log
+/var/log/syslog
+dmesg
+journalctl 
+    -u : unit name
+    -f : follow
+
+/etc/rsyslog.conf : Logging Rules
+/etc/logrotate.conf : Logs Clean Up
+
+### BOOT PROCESS / KERNEL / init ###
+BIOS/UEFI -->  Bootloader --> Kernel --> Init : Systemd
+
+strace [commmand] : Traces system calls and signals
+
+uname
+    -r : current linux kernel
+    -n : node name
+    -m : cpu architecture
+    -v : kernel version
+    -a : all
+hostname
+hostnamectl : more info than uname and hostname
+/proc/version : same as uname -a
+
+old --
+lsmod : List kernel modules
+insmod : Insert module
+rmmod : Remove module
+
+new --
+modinfo
+modprob
+    -a : add
+    -r : remove
+
+service [serviceName] start/stop/restart : For System V
+systemctl status/start/stop/restart/enable/disable [unitName] : For Systemd
+
+shutdown 
+    [##:##]
+    -h
+    -H :
+    -r [delay#/now] : reboot 
+    -c : cancel
+halt
+reboot
+    -p : Power off
+    -f : Force
+
+sysrq shutdown method
+echo "1" | sudo tee /proc/sys/kernel/sysrq
+alt + sysrq (print screen)
+r : switch keyboard raw to xlate mode
+e : signal to all except init
+i : sigkill to all processes
+s : syncs all mounted file systems
+u : remount all as read-only
+b/o : reboot / shutdown
+
+-------
+
+passwd
+sed [s/name/NAME/g file]
+dhcpd
+apt-cache (search)
+&
+atq
+atrm
+set
+unset
+export
+nmap (-v, -sV, -A, -sP)
+shred (-f, -n #)
+*proxychains
+aircrack-ng
+airmon-ng
+airodump-ng
+aireplay-ng
+hciconfig
+hcitool
+sdptool
+update-rc.d
+curl
+watch
+tmux
+awk
+diff
+wall
+ufw
+netcat
+nc
+
+/etc/resolve.conf -> DNS server
+/home/username/.profile -> change umask
+/etc/init.d/rc -> Startup scripts

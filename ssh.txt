@@ -1,0 +1,16 @@
+# Install openssh-server
+sudo apt install openssh-server
+
+sudo systemctl status sshd : Check status
+ip a : Find Ip
+hostname -I : Find Ip
+
+ssh-keygen 
+    -t [ed25519] : type of key
+    -f ~/.ssh/[name] : Location where the public and private key will be stored
+    -C : Comment
+>> ssh-keygen -t ed25519 -f ~/.ssh/github -C "Github account"
+
+# Connect to VM remote server
+ssh userName@serverName -p 2222
+ssh userName@serverName -p 2222 ls : list the contents of the current path in the remote machine.

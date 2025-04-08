@@ -1,0 +1,140 @@
+
+# 3 Steps to Great Software
+- Make sure your software does what the customer wants it to do. 
+- Apply basic OO principles to add functionality.
+- Strive for a maintainable, reusable design. 
+
+# Use cases
+- A use case is a technique for capturing the potential requirementes of a new system of software change. Each use case provides on or more scenarios that convey how the system should interact with the end user or another system to achieve a specific goal.
+
+- Must have a clear value
+- Must have a definite starting and stopping point
+- It's started off by an external initiator.
+
+#  In textual analysis:
+- The nouns in the Use Case can hint you the Classes that you need to have. 
+- The verbs in the Use Case are usually the Methods of the Objects in the system.
+- A good Use Case clearly and accurately explains what a system does, in language that's easy to understand
+
+# In UML
+- The association line goes from the class with the reference to the class that is the type being referenced. Line arrow.
+- The name of the attribute is not written in the class box but in the association line near the number
+- The generalization line goes from the specific class to the general class. Open arrow.
+- The aggregation line goes from the class that is part of the other class. Open diamond. 
+- The composition line goes from the parent class from where subclasses's behavior is taken. Solid diamond.  
+
+# OO cosas
+- Abstract classes are placeholders for actual implementation classes
+- The abstract class defines behavior, and the subclasses implement that behavior.
+
+- Always favor coding to the interface, not the implementation
+- Encapsulation helps you protect your classes from unnecessary changes
+- Encapsulate what varies
+- Make sure that each class has only one reason to change
+- Strive for High cohesion and loosely coupled classes
+- If you need to use functionality in another class, but don't want to change that functionality, use delegation insted of inheritance. 
+- Composition allows you to use behavior from a family of other classes, and to change that behavior at runtime.
+- Aggregation is when one class is used as part of another class, but still exists outside of that other class.
+
+
+# OO Principles
+The goal of Design principles is to make code more maintainable, flexible and extensible.
+- Encapsulate what varies.
+- Code to an interface rather than to an implementation.
+- Each class in your application should have only one reason to change.
+- Classes are about behavior or funcionality.
+
+- OCP Open-Closed Principle : Classes should be open for extension, and close for modification.
+- DRY Don't Repeat Yourself : Avoid duplicate code by abstracting out things that are common and place those in a single location.
+    Try to implement each feature and requirement one single time.
+- SRP Single Responsability Principle   
+- LSP Liskov Substitution Principle : Subtypes must be substitutable for their base types. 
+    Delegation, composition and aggregation are alternatives to inheritance. 
+
+- SRP Test
+    The [ClassName] [methodName]s itself. -> If this doesn't make sense then you're problably violating the SRP.
+
+# Tests
+1. Each test should have an Id and a name.
+2. Each test should test one specific thing. Should be atomic. 
+3. Each test should have a supplied input. 
+4. Each test should have an expected output. 
+5. Most test cases have a starting state. 
+
+Test Design Table
+ID | What we're testing | Input | Expected Output | Starting State
+
+# Features / Use Cases
+- Feature List are all about understanding what your software is supposed to do.
+- Your use case diagrams let you start thinking about how your software will be used. No details yet.
+- Use cases = usage / Features = functionality
+- Use cases are requirements for how people and things interact with the system 
+- Features are requirements about things that the system does. 
+
+Is-a = Inheritance
+Has-a = Composition/aggregation
+
+Tips : 
+- Design decisions are always a trade off. 
+- Use inheritance when one object behaves like another, rather than just when the Is-a relationship applies. 
+- Be aware of the different use case formats, metrics, sequence diagrams, state diagrams
+- Desing patterns help you recognize and implement GOOD solutions to common problems.
+- Antipatterns are about recognizing and avoiding BAD solutions to common problems. 
+- CRC (Class Responsibility Collaborator) Cards can be used to make sure Classes follow SRP.
+- Writing readable code makes that code easier to maintain and reuse, for you and other developers
+
+- Encapsulation is the process of enclosing programming elements inside a larger, more abstract entities. Also information hinding or separation of concerns. 
+
+# OO&A lifecycle
+- Feature list
+- Use case diagrams
+- Break up the problem 
+- Requirements
+- Domain Analysis
+- Preliminary Design 
+- Implementation
+- Delivery
+
+### Requirements ###
+- Good requirements ensure your system works like your customers expect.
+- Make sure your requirements cover all the steps in the use cases for your system. 
+- Use your use cases to find out about things your customers forgot to tell you.
+- Your use cases will reveal any incomplete of missing requirements that you might have to add to your system.
+- Your requirements will always change (and grow) over time. 
+
+### Analysis and Design ###
+- Well-design software is easy to change and extend.
+- Use basic OO principles like encapsulation and inheritance to make your software more flexible.
+- If a design isn't flexible, then change it!. Never settle on bad design, even if it's your bad design that has to change.
+- Make sure each of your classes is cohesive: Each of your classes should focus on doing ONE THING really well. (Loosely coupled software)
+- Always strive for higher cohesion as you move through your software's design life cycle.
+
+### Solving Big Problems ###
+- Listen to the customer, and figure out what they want you to build. 
+- Put together a feature list, in language that the customer understands..
+- Make sure your features are what the customer actually wants. 
+- Create blueprints of the system using use case diagrams and use cases.
+- Break the big system up into lots of smaller sections.
+- Apply design patters to the smaller sections of the system.
+- Use basic OOA&D principles to design and code each smaller section.
+
+### OO Principles ###
+- Encapsulate what varies.
+- Code to an interface rather that to an implementation. 
+- Each class on your application should have only one reason to change. 
+- Classes are about behavior and functionality.
+- Classes should be open for extension, but closed for modification. (OPC)
+- Avoid duplicate code by abstracting out this that are common and placing them in a single location. (DRY)
+- Every object in your system should have a single responsibility, and all the object's services should be focused on carrying out that single responsability. (SRP)
+- Subclasses should be substitutable for their base classes. (LSP)
+
+### Programming Practices ###
+- Programming by contract sets up an agreement about how your software behaves that you and users of your software agree to abide by. 
+- Defensive programming doesn't trust other software, and does extensive error and data checking to ensure the other software doesn't give you bad or unsafe information. 
+
+### Development Approaches ###
+- Use Case Driven Development takes a single use case in your system, and focuses on completing the code to implement that entire use case, including all of its scenarios, before moving on to anything else in the application.
+- Feature Driven Development focuses on a single feature, and codes all the behavior of that feature, before moving on to anything else in the application. 
+- Test Driven Development writes test scenarios for a piece of funcionality before writing the code for that functionality. Then you write software to pass all the tests.
+- Good software development usually incorporates all of these development models at different stages of the development cycle. 
+
