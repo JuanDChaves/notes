@@ -31,14 +31,15 @@ git config --global user.email "juandavidchaves@protonmail.com"
 git config --global user.name "JuanDChaves"
 git log
 git checkout  
-	[commitHashcode] : Use hashcode found in the log to go to a certain commit.
+	[commitID] : Use hashcode found in the log to go to a certain commit.
 	[branchName] : Switch to a branch.
 	-- : Current branch. Delete unstaged changes.
 	. : all
 	-b [newBranchName] : Create and Switch to a new branch.
 git branch
 	: To show what branch you are in.
-	[newBranchName] : To add a branch
+	[newBranchName] : Add a new branch
+	[newBranchName] [detachedHEADcommitID] : Add a new branch where a detached HEAD can go.
 	-d : Delete only merged branches.
 	-D : Delete merged or not merged branches 
 git merge	
