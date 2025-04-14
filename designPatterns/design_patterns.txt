@@ -34,3 +34,20 @@
 # The Command Pattern
 - Encapsulates a request as an object, thereby letting you parameterize other objects with different requests, queue or log requests, and support undoable operations.
 
+# The Adapter Pattern
+# The Facade Pattern
+# The Template Method Pattern
+# The Iterator Pattern
+# The Composite Pattern
+# The State Pattern
+# The Proxy Pattern
+# MVC
+# Bridge
+# Builder
+# Chain of Responsability
+# Flyweight
+# Interpreter
+# Mediator
+# Memento
+# Prototype
+# Visitor
